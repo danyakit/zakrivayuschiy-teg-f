@@ -11,10 +11,388 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
 */
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font);
+  font-variation-settings: var(--weight-main-font);
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  max-width: 696px;
+  width: 100%;
+  background-color: var(--bg-color);
+  outline: 2px solid var(--accent-color);
+  margin-block-start: 50px;
+}
+
+.content:first-of-type {
+  margin-block-start: 102px;
+}
+
+.content:nth-child(3) {
+  margin-block-start: 45px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: clamp(20.188rem, 19.2859rem + 3.849vw, 22.75rem);
+  font-family: var(--accent-font);
+}
+
+.header_title {
+  text-transform: uppercase;
+  text-align: center;
+  align-items: center;
+}
+
+.main_title {
+  font-size: clamp(3rem, 2.6964rem + 1.5179vw, 4.0625rem);
+  margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  margin-block-end: 20px;
+}
+
+.minor_title {
+  font-size: clamp(0.875rem, 0.7143rem + 0.8036vw, 1.4375rem);
+}
+
+.header__theme-menu {
+  display: grid;
+  margin-inline-start: clamp(9.563rem, 6.1081rem + 14.741vw, 19.375rem);
+  margin-inline-end: clamp(8.3125rem, 4.7038rem + 15.3991vw, 18.563rem);
+  margin-block-start: 23px;
+}
+
+.theme-menu__list {
+  display: grid;
+  gap: 9px;
+}
+
+.theme-menu__button {
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  position: absolute;
+  content: "▶";
+  display: block;
+  transition: transform 0.5s ease-in-out;
+  animation: arrowMove 0.5s infinite alternate;
+  inset-inline-start: -20px;
+}
+
+.theme-menu__item:hover .theme-menu__button {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s;
+}
+
+.theme-menu__button:hover::after {
+  width: 100%;
+}
+
+.section_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.section_title {
+  font-size: var(--main-font-size);
+  font-variation-settings: var(--weight-title-font);
+  margin: 5px 24px 5px 10px;
+}
+
+.block_label {
+  position: relative;
+}
+
+.text_label {
+  position: absolute;
+  color: var(--accent-color);
+  font-family: var(--accent-font);
+  font-size: 14px;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  top: 25px;
+  right: 25px;
+  text-shadow: -1px 0 var(--bg-color), 0 1px var(--bg-color),
+    1px 0 var(--bg-color), 0 -1px var(--bg-color);
+}
+
+@supports (
+  (text-stroke: 1px var(--bg-color)) or
+    (-webkit-text-stroke: 1px var(--bg-color))
+) {
+  .text_label {
+    -webkit-text-stroke: 1px var(--bg-color);
+    text-shadow: none;
+  }
+}
+
+.image_section {
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 696px;
+  width: 100%;
+}
+
+.card_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 25px;
+  gap: 27px;
+}
+
+.section_text {
+  line-height: 21px;
+  font-size: var(--main-font-size);
+}
+
+.block_buttom {
+  display: flex;
+  justify-content: end;
+  margin: 0 25px 25px 0;
+  gap: 3px;
+}
+
+.card__like-button {
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  inline-size: 130px;
+  block-size: 38px;
+  padding: 9px 17px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.button__text {
+  position: relative;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 90%;
+  mix-blend-mode: difference;
+  transition: color 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.card__like-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  transition: left 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.card__like-button:hover::before {
+  left: 0;
+}
+
+.card_save {
+  display: flex;
+  gap: 8px;
+  margin-block-start: 52px;
+  background-color: var(--bg-color);
+  inline-size: clamp(19.125rem, 18.4866rem + 2.7238vw, 20.938rem);
+  block-size: 51px;
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card_save:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.card_save::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  transition: left 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.card_save:hover::before {
+  left: 0;
+}
+
+.card_icon {
+  width: 21px;
+  height: 21px;
+  fill: var(--accent-color);
+}
+
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.dialog {
+  inline-size: 357px;
+  block-size: 193px;
+  border: 2px solid var(--accent-color);
+  background: var(--bg-color);
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.dialog::backdrop {
+  opacity: 0.75;
+  background: var(--accent-color, #000);
+}
+
+.floppy_in_dialog {
+  width: 39px;
+  height: 39px;
+}
+
+.dialog_button {
+  background-color: transparent;
+  display: flex;
+  inline-size: 293px;
+  block-size: 38px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border: 2px solid var(--accent-color);
+}
+
+.dialog_button:focus {
+  outline: none;
+}
+
+.dialog_button:focus-visible {
+  box-shadow: 2px 2px 0px currentColor;
+}
+
+.dialog:is([open]) {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog_content {
+  inline-size: 293px;
+  block-size: 63px;
+  display: flex;
+  gap: 20px;
+}
+
+.dialog_text {
+  width: 234px;
+  line-height: 150%;
+}
+
+@media (width <= 375px) {
+  .card_text {
+    margin-inline-end: 28.95px;
+  }
+
+  .content:nth-child(6) {
+    margin-block-start: 45px;
+  }
+
+  .card_save {
+    display: flex;
+    flex-direction: column;
+    block-size: 80px;
+    margin-block-start: 45px;
+  }
+
+  .card_icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .card_text {
+    margin-block-start: 22px;
+  }
+
+  .dialog {
+    width: 341px;
+    height: 195px;
+  }
+
+  .dialog_button {
+    inline-size: 257px;
+  }
+
+  .dialog_content {
+    inline-size: 257px;
+  }
+
+  .dialog:is([open]) {
+    gap: 20px;
+  }
+
+  .dialog_text {
+    width: 198px;
+  }
 }

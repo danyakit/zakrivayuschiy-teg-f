@@ -12,3 +12,114 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes arrowMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color);
+  transition: 0.3s ease;
+  height: 40px;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.card__icon-button:hover .like-icon .core {
+  transition: fill 0.3s linear 0.05s, opacity 0.3s linear 0s;
+  fill: var(--accent-color);
+  opacity: 1;
+}
+
+.card__icon-button:hover .like-icon .main-body {
+  transition: fill 0.5s linear 0.3s;
+  fill: var(--accent-color);
+}
+
+.like-icon .core {
+  transition: fill 0.3s linear, opacity 0.3s linear 0s;
+}
+
+.like-icon .main-body {
+  transition: fill 0.3s linear 0.03s;
+}
+
+.card__icon-button:active .like-icon .core {
+  transition: fill 0.3s linear 0.05s, opacity 0.3s linear 0s;
+  fill: var(--color-heart);
+  opacity: 1;
+}
+
+.card__icon-button:active .like-icon .main-body {
+  transition: fill 0.5s linear 0.3s;
+  fill: var(--color-heart);
+}
+
+.card__icon-button:active .like-icon:active .contour {
+  transition: fill 0.3s linear 0.6s;
+  fill: var(--color-heart);
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--color-heart);
+}
+
+.like-icon.is-liked .core {
+  fill: var(--color-heart);
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--color-heart);
+}
+
+.card__icon-button:hover .like-icon.is-liked .main-body {
+  transition: fill 0.5s linear 0.3s;
+  fill: var(--color-heart);
+}
+
+.card__icon-button:hover .like-icon.is-liked .core {
+  transition: fill 0.5s linear 0.3s;
+  fill: var(--color-heart);
+}
+
+.like-icon.is-liked .heart {
+  animation: 0.3s ease-in 0.1s scaleHeart 2 alternate forwards;
+  transform-origin: center;
+  fill: var(--color-heart);
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparkle 0.3s linear 0.3s 2;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scaleHeart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

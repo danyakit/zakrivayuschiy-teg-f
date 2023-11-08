@@ -1,1 +1,46 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --accent-font: "PressStart2P", monospace;
+  --main-font: "Intel", sans-serif;
+  --weight-main-font: "wght" 400;
+  --weight-title-font: "wght" 700;
+  --bg-color: #fff;
+  --accent-color: #000;
+  --main-font-size: 18px;
+  --color-heart: #ff0000;
+
+  --bg-horizontal-lines-light: repeating-linear-gradient(
+    to right,
+    #d3d3d3 0,
+    #d3d3d3 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  --bg-vertical-lines-light: repeating-linear-gradient(
+    to bottom,
+    #d3d3d3 0,
+    #d3d3d3 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  --bg-image-light: var(--bg-horizontal-lines-light),
+    var(--bg-vertical-lines-light),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+
+  --bg-horizontal-lines-dark: repeating-linear-gradient(
+    to right,
+    #000 0,
+    #000 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  --bg-vertical-lines-dark: repeating-linear-gradient(
+    to bottom,
+    #000 0,
+    #000 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  --bg-image-dark: var(--bg-horizontal-lines-dark),
+    var(--bg-vertical-lines-dark), linear-gradient(to bottom, #007f0c, #004306);
+}
