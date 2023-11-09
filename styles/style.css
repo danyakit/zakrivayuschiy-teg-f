@@ -16,7 +16,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-variation-settings: var(--weight-main-font);
   background-color: var(--bg-color);
   color: var(--accent-color);
@@ -30,8 +30,8 @@
 }
 
 .content {
-  max-width: 696px;
-  width: 100%;
+  max-inline-size: 696px;
+  inline-size: 100%;
   background-color: var(--bg-color);
   outline: 2px solid var(--accent-color);
   margin-block-start: 50px;
@@ -48,14 +48,14 @@
 .header {
   display: flex;
   flex-direction: column;
-  height: clamp(20.188rem, 19.2859rem + 3.849vw, 22.75rem);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), monospace;
 }
 
 .header_title {
   text-transform: uppercase;
   text-align: center;
   align-items: center;
+  text-decoration: none;
 }
 
 .main_title {
@@ -73,6 +73,7 @@
   margin-inline-start: clamp(9.563rem, 6.1081rem + 14.741vw, 19.375rem);
   margin-inline-end: clamp(8.3125rem, 4.7038rem + 15.3991vw, 18.563rem);
   margin-block-start: 23px;
+  margin-block-end: 25px;
 }
 
 .theme-menu__list {
@@ -99,8 +100,7 @@
   position: absolute;
   content: "▶";
   display: block;
-  transition: transform 0.5s ease-in-out;
-  animation: arrowMove 0.5s infinite alternate;
+  animation: arrowMove 0.5s ease-in-out infinite alternate;
   inset-inline-start: -20px;
 }
 
@@ -143,7 +143,7 @@
 .text_label {
   position: absolute;
   color: var(--accent-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), monospace;
   font-size: 14px;
   opacity: 0.5;
   mix-blend-mode: hard-light;
@@ -151,6 +151,7 @@
   right: 25px;
   text-shadow: -1px 0 var(--bg-color), 0 1px var(--bg-color),
     1px 0 var(--bg-color), 0 -1px var(--bg-color);
+  z-index: 2;
 }
 
 @supports (
@@ -169,6 +170,35 @@
   background-repeat: no-repeat;
   max-width: 696px;
   width: 100%;
+}
+
+.image_two {
+  /* Я знаю, что числительные для класса лучше не использовать, но в данной ситуации не смогла придумать ничего лучше :) */
+  filter: saturate(180%);
+}
+
+.image_three {
+  filter: blur(0.2rem);
+}
+
+.image_four {
+  filter: contrast(150%);
+}
+
+.image_five {
+  filter: hue-rotate(90deg);
+}
+
+.image_six {
+  filter: sepia(80%);
+}
+
+.image_seven {
+  filter: invert(0.2);
+}
+
+.image_eight {
+  filter: grayscale(0.8) blur(0.1rem);
 }
 
 .card_text {
@@ -207,7 +237,7 @@
 
 .button__text {
   position: relative;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), monospace;
   font-size: 14px;
   line-height: 90%;
   mix-blend-mode: difference;
@@ -238,17 +268,20 @@
   left: 0;
 }
 
-.card_save {
+.modal_window {
   display: flex;
-  gap: 8px;
-  margin-block-start: 52px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_save {
+  margin-block-start: 50px;
+  margin-block-end: 105px;
   background-color: var(--bg-color);
   inline-size: clamp(19.125rem, 18.4866rem + 2.7238vw, 20.938rem);
   block-size: 51px;
   border: 2px solid var(--accent-color);
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
   position: relative;
   overflow: hidden;
 }
@@ -294,7 +327,7 @@
 
 .dialog {
   inline-size: 357px;
-  block-size: 193px;
+  padding: 0;
   border: 2px solid var(--accent-color);
   background: var(--bg-color);
   color: var(--accent-color);
@@ -312,6 +345,7 @@
 }
 
 .dialog_button {
+  margin-block-end: 29px;
   background-color: transparent;
   display: flex;
   inline-size: 293px;
@@ -319,6 +353,9 @@
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
   border: 2px solid var(--accent-color);
 }
 
@@ -330,6 +367,23 @@
   box-shadow: 2px 2px 0px currentColor;
 }
 
+.dialog_button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  transition: left 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.dialog_button:hover::before {
+  left: 0;
+}
+
 .dialog:is([open]) {
   display: flex;
   flex-direction: column;
@@ -339,14 +393,14 @@
 }
 
 .dialog_content {
+  margin-block-start: 29px;
   inline-size: 293px;
-  block-size: 63px;
   display: flex;
   gap: 20px;
 }
 
 .dialog_text {
-  width: 234px;
+  inline-size: 234px;
   line-height: 150%;
 }
 
@@ -377,7 +431,6 @@
 
   .dialog {
     width: 341px;
-    height: 195px;
   }
 
   .dialog_button {
@@ -393,6 +446,6 @@
   }
 
   .dialog_text {
-    width: 198px;
+    inline-size: 198px;
   }
 }
