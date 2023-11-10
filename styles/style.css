@@ -51,20 +51,20 @@
   font-family: var(--accent-font), monospace;
 }
 
-.header_title {
+.header_content {
   text-transform: uppercase;
   text-align: center;
   align-items: center;
   text-decoration: none;
 }
 
-.main_title {
+.header_link {
   font-size: clamp(3rem, 2.6964rem + 1.5179vw, 4.0625rem);
   margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
   margin-block-end: 20px;
 }
 
-.minor_title {
+.main_title {
   font-size: clamp(0.875rem, 0.7143rem + 0.8036vw, 1.4375rem);
 }
 
@@ -172,32 +172,32 @@
   width: 100%;
 }
 
-.image_two {
+.image_saturate {
   /* Я знаю, что числительные для класса лучше не использовать, но в данной ситуации не смогла придумать ничего лучше :) */
   filter: saturate(180%);
 }
 
-.image_three {
+.image_blur {
   filter: blur(0.2rem);
 }
 
-.image_four {
+.image_contrast {
   filter: contrast(150%);
 }
 
-.image_five {
+.image_rotate {
   filter: hue-rotate(90deg);
 }
 
-.image_six {
+.image_sepia {
   filter: sepia(80%);
 }
 
-.image_seven {
+.image_invert {
   filter: invert(0.2);
 }
 
-.image_eight {
+.image_filter {
   filter: grayscale(0.8) blur(0.1rem);
 }
 
